@@ -1,6 +1,6 @@
 # Bilingual-Term-Extract
 
-[![CI](https://github.com/tanyaqiong31029/Bilingual-Term-Extract/actions/workflows/ci.yml/badge.svg)](https://github.com/tanyaqiong31029/Bilingual-Term-Extract/actions/workflows/ci.yml)
+[![CI](https://github.com/tanyaqiongcode/Bilingual-Term-Extract/actions/workflows/ci.yml/badge.svg)](https://github.com/tanyaqiongcode/Bilingual-Term-Extract/actions/workflows/ci.yml)
 
 从**双语平行文本**自动提取「源语-目标语」对照术语表的 agent 技能 + 零依赖 CLI。统计召回 + LLM 精筛的混合管线，产出可直接导入 **Trados MultiTerm / memoQ** 的 TBX 术语库。
 
@@ -23,7 +23,7 @@
 把仓库放入技能目录（ZCode/Claude Code 等 agent 环境）：
 
 ```bash
-git clone https://github.com/tanyaqiong31029/Bilingual-Term-Extract.git \
+git clone https://github.com/tanyaqiongcode/Bilingual-Term-Extract.git \
   ~/.agents/skills/bilingual-term-extract
 ```
 
@@ -90,7 +90,7 @@ SECURITY.md         安全策略与安全边界
 
 ## 致谢
 
-- [multi-align](https://github.com/tanyaqiong31029/multi-align)（同作者）：分句器与 Gale-Church 对齐器适配自此项目
+- [multi-align](https://github.com/tanyaqiongcode/multi-align)（同作者）：分句器与 Gale-Church 对齐器适配自此项目
 - [TermSuite](https://github.com/termsuite/termsuite-core)：C-value 与术语变体思想
 - [The Termolator](https://github.com/AdamMeyers/The_Termolator)：统计召回 + 知识过滤的混合思路
 - [bitext-lexind](https://github.com/facebookresearch/bitext-lexind)（Meta）：词对齐→词条→过滤的管线范式

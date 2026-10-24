@@ -1,6 +1,6 @@
 'use strict';
 /* Bilingual-Term-Extract —— 文件导入（Node 版）
- * DOCX 读取适配自 multi-align js/docximport.js（MIT License, tanyaqiong31029），
+ * DOCX 读取适配自 multi-align js/docximport.js（MIT License, tanyaqiongcode），
  * 解压改用 node:zlib（无浏览器 API 依赖）；TXT 支持 UTF-8 / GBK / Big5 自动识别。
  */
 const fs = require('fs');

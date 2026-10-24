@@ -98,4 +98,4 @@ SECURITY.md         安全策略与安全边界
 
 ## License
 
-[MIT](LICENSE) © 2026 tanyaqiong31029
+[MIT](LICENSE) © 2026 tanyaqiongcode

@@ -23,7 +23,7 @@ scripts/
     └── exporters.js     TBX / CSV / JSON / Markdown
 ```
 
-分句与句对齐适配自 multi-align（MIT, tanyaqiong31029），保留了其基准验证过的规则与滑窗分块。
+分句与句对齐适配自 multi-align（MIT, tanyaqiongcode），保留了其基准验证过的规则与滑窗分块。
 
 ## 1. 句对齐
 

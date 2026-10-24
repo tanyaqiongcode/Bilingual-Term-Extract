@@ -1,6 +1,6 @@
 'use strict';
 /* Bilingual-Term-Extract —— 多语分句 / 语言检测
- * 适配自 multi-align js/segmenter.js（MIT License, tanyaqiong31029），
+ * 适配自 multi-align js/segmenter.js（MIT License, tanyaqiongcode），
  * 保留经过基准验证的分句规则（缩写库、小数、引号闭合、脚注上标、有序列表标号）。
  */
 const U = require('./util.js');

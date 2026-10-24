@@ -1,6 +1,6 @@
 'use strict';
 /* Bilingual-Term-Extract —— 通用工具
- * charClass / weightedLen / isCJKText 适配自 multi-align（MIT License, tanyaqiong31029）
+ * charClass / weightedLen / isCJKText 适配自 multi-align（MIT License, tanyaqiongcode）
  */
 
 function escapeXml(s) {

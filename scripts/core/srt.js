@@ -1,6 +1,6 @@
 'use strict';
 /* Bilingual-Term-Extract —— SRT/VTT 字幕导入
- * 解析适配自 multi-align js/srt.js（MIT License, tanyaqiong31029），只保留导入侧。
+ * 解析适配自 multi-align js/srt.js（MIT License, tanyaqiongcode），只保留导入侧。
  * 宽容解析：VTT 头、无小时时间戳、毫秒点/逗号、序号行可有可无；<i>/<font> 与
  * {\an8} 位置标签清洗。每条 cue 输出为一个自然段（空行分隔）——字幕 cue 天然是
  * "同序小段"，下游 Gale-Church 的段落锚定在 cue 数接近的双语字幕上几乎零误差。

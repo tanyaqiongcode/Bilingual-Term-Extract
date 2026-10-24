@@ -1,6 +1,6 @@
 'use strict';
 /* Bilingual-Term-Extract —— Gale-Church 长度统计句对齐
- * 适配自 multi-align js/aligner.js（MIT License, tanyaqiong31029）。
+ * 适配自 multi-align js/aligner.js（MIT License, tanyaqiongcode）。
  * 参考文献：Gale & Church (1993), "A Program for Aligning Sentences in Bilingual Corpora"
  * 增强：数字锚点加权、同文种词汇相似度加权、自然段锚定、超长文本滑窗分块。
  */

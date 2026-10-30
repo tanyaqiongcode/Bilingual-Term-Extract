@@ -26,16 +26,24 @@ function validateDecisions(decisions, candidates) {
     candByTerm.set(c.term, c);
     candByNorm.set(normKey(c.term), c);
   }
-  const seen = new Set();
+  const seen = new Map(); // normKey → 首条决定（归一化判重：大小写/单复数变体视为同一术语）
   decisions.forEach((d, i) => {
     const at = '第 ' + (i + 1) + ' 条';
     if (!d || typeof d !== 'object' || Array.isArray(d)) { errors.push(at + '：不是对象'); return; }
     const term = d.term;
     if (typeof term !== 'string' || !term.trim()) { errors.push(at + '：缺少 term 字段'); return; }
     if (typeof d.accept !== 'boolean') { errors.push(at + '（' + term + '）：accept 必须是布尔值'); }
-    if (seen.has(term)) errors.push(at + '（' + term + '）：术语重复出现');
-    seen.add(term);
-    const hit = candByTerm.get(term) || candByNorm.get(normKey(term));
+    const nk = normKey(term);
+    const first = seen.get(nk);
+    if (first) {
+      const conflict = first.d.accept !== d.accept ||
+        (d.tgt !== undefined && first.d.tgt !== undefined && first.d.tgt !== d.tgt);
+      errors.push(at + '（' + term + '）：与第 ' + first.idx + ' 条「' + first.term + '」归一化后重复' +
+        (conflict ? '且决定冲突（两条只按首条处理，请删除一条）' : '，请删除一条'));
+    } else {
+      seen.set(nk, { d, term, idx: i + 1 });
+    }
+    const hit = candByTerm.get(term) || candByNorm.get(nk);
     if (!hit) {
       errors.push(at + '（' + term + '）：在候选列表中不存在（term 必须与 candidates.json 中的术语一致）');
     }

@@ -171,6 +171,25 @@ ok('未知术语报错', validateDecisions([{ term: 'nonexistent', accept: true 
 ok('accept 缺失报错', validateDecisions([{ term: 'edge computing' }], fakeCands).valid === false);
 ok('conf 越界报错', validateDecisions([{ term: 'edge computing', accept: true, conf: 1.5 }], fakeCands).valid === false);
 ok('重复术语报错', validateDecisions([{ term: 'edge computing', accept: true }, { term: 'edge computing', accept: true }], fakeCands).valid === false);
+
+// 归一化判重：大小写变体视为同一术语，禁止重复与冲突决定（防决定被悄悄忽略）
+const dupCase = validateDecisions([
+  { term: 'edge computing', accept: true },
+  { term: 'Edge Computing', accept: true }
+], fakeCands);
+ok('大小写变体判重报错', dupCase.valid === false, dupCase.errors);
+ok('判重消息含归一化与首条定位', dupCase.errors[0].includes('归一化后重复') && dupCase.errors[0].includes('第 1 条'));
+const conflict = validateDecisions([
+  { term: 'edge computing', accept: true },
+  { term: 'Edge Computing', accept: false }
+], fakeCands);
+ok('相反决定按冲突拒绝', conflict.valid === false && conflict.errors[0].includes('决定冲突'));
+const conflictTgt = validateDecisions([
+  { term: 'edge computing', accept: true, tgt: '边缘计算' },
+  { term: 'edge computing', accept: true, tgt: '边缘运算' }
+], fakeCands);
+ok('tgt 不一致按冲突拒绝', conflictTgt.valid === false && conflictTgt.errors[0].includes('决定冲突'));
+
 eq('undecided 计数', validateDecisions([{ term: 'edge computing', accept: true }], fakeCands).undecided, 0);
 eq('normKey 一致性', normKey('Edge Computing'), 'edge computing');
 

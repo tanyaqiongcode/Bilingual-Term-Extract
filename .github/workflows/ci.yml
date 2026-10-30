@@ -39,6 +39,21 @@ jobs:
       - name: ESLint（与本地 lint-staged 同一套 flat config）
         run: npm run lint
 
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 覆盖率门槛（语句/行 ≥97%，分支 ≥75%，函数 100%；低于阈值 CI 失败）
+        run: npm run coverage
+
   security:
     runs-on: ubuntu-latest
     steps:

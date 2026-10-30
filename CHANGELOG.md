@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0 (2026-10-31)
+
+- **decisions 归一化判重**：validate 现按 normKey 判重——大小写/单复数变体视为同一术语，
+  重复报错；相反决定（accept 不同）或 tgt 不一致按「决定冲突」拒绝，杜绝决定被悄悄忽略
+  （此前两条可同时过校验、finalize 按首条静默处理）；SKILL.md schema 同步说明
+- **开发依赖治理**：fast-uri moderate 告警修复（audit 归零）；commitlint cli/config 主版本对齐 21.x
+- **覆盖率门槛入 CI**：npm run coverage 带 c8 --check-coverage（语句/行 ≥97%，分支 ≥75%，
+  函数 100%），新增 coverage job，低于阈值 CI 失败
+- **运行环境与互操作边界**：README 区分用户（Node ≥18）/开发者（Node ≥20.19）环境；
+  仓库 About 指向 SKILL.md 入门文档；新增 examples/（真实管线产出的 TBX/CSV/MD 样例）
+  与 MultiTerm Convert、memoQ CSV 导入分步指南
+- 回归测试 141 → **160 项**
+
+## 1.3.0 (2026-09-06)
 ## 1.3.0 (2026-09-06)
 
 - **TMX 行内标签按元素语义清洗**（Trados/memoQ 互操作修复）：bpt/ept/it/ph 的内容

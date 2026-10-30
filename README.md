@@ -14,7 +14,7 @@
 - **统计译文**：句级 Dice 共现关联 + 连续段打分 + 两轮共识投票（不依赖任何外部模型/API）
 - **LLM 精筛**：由 agent 技能承载——判定真伪术语、确认/修正译文、标注词性/领域/置信度
 - **导出**：TBX（MultiTerm/memoQ 兼容）、CSV（Excel BOM）、JSON、Markdown，附审校报告
-- **质量保障**：141 项无头回归测试（覆盖率基线 97.4%，npm run coverage） + 金标准基准（EN↔ZH 各 16 术语对：召回 100%、统计译文 top-3 75%）
+- **质量保障**：160 项无头回归测试（覆盖率门槛：语句 97% / 分支 75%，npm run coverage） + 金标准基准（EN↔ZH 各 16 术语对：召回 100%、统计译文 top-3 75%）
 
 ## 快速开始
 
@@ -70,19 +70,33 @@ node scripts/finalize.js --candidates output/demo_candidates.json \
 ## 开发与测试
 
 ```bash
-node tests/pipeline_test.js        # 无头回归（141 断言，~3s）
+node tests/pipeline_test.js        # 无头回归（160 断言，~3s）
 node benchmark/run_benchmark.js    # 金标准基准（--verbose 逐术语核对）
+npm run coverage                   # 覆盖率 + 门槛检查（语句/行 ≥97%，分支 ≥75%，函数 100%）
 ```
 
-要求 Node ≥ 18，零第三方依赖。
+**运行环境**：
+
+| 场景 | 要求 |
+|---|---|
+| 作为用户/技能使用（跑 `scripts/`） | Node ≥ 18，零第三方依赖 |
+| 参与开发（`npm ci` + ESLint 10 + c8） | Node ≥ 20.19（ESLint 10 的要求；CI 使用 Node 20） |
+
+## 导入 Trados / memoQ
+
+[`examples/`](examples/) 提供由本工具完整管线真实产出的样例术语表（EN↔ZH 35 条），
+`examples/README.md` 含 MultiTerm Convert 与 memoQ CSV 导入的分步操作与字段映射说明。
+导出格式兼容性：**TBX v02 martif**（MultiTerm / memoQ 均可）与 **CSV**（UTF-8 BOM，
+Excel 公式注入防护默认开启）。
 
 ## 项目结构
 
 ```
 SKILL.md            agent 技能规范（工作流 / decisions schema / 红线）
 scripts/            CLI + 核心算法模块（core/）
-tests/              无头回归
+tests/              无头回归 + 覆盖率基线
 benchmark/          金标准基准 + 自创 EN↔ZH 平行样例
+examples/           Trados/memoQ 导入样例（真实管线产出）
 references/         架构与算法参考
 CONTRIBUTING.md     贡献指南（规范 / 测试要求 / PR 流程）
 SECURITY.md         安全策略与安全边界

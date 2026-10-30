@@ -8,7 +8,7 @@
 ## 常用命令
 ```bash
 npx eslint .                        # lint（0 问题）
-node tests/pipeline_test.js         # 流水线回归（断言总数以输出为准，当前 141+），必须全过
+node tests/pipeline_test.js         # 流水线回归（断言总数以输出为准，当前 160+），必须全过
 node benchmark/run_benchmark.js     # 基准测试，必须全过
 uvx pre-commit run --all-files      # 提交前全量自检
 ```
@@ -22,5 +22,6 @@ uvx pre-commit run --all-files      # 提交前全量自检
 - **SKILL.md 的指令语义不得改动**（它是 skill 行为定义）。
 - **package.json 不加 `"type": "module"`**：全部脚本为 CommonJS（`require()`），写了会全线崩。
 - 零第三方运行时依赖，新增依赖仅限 devDependencies。
+- 开发环境 Node ≥ 20.19（ESLint 10 要求）；用户侧运行仅需 Node ≥ 18。
 - eslint 按 CommonJS + node globals 配置（`**/*.mjs` 单独豁免为 module），新脚本遵循同款结构。
 - 密钥（LLM 精筛用 API key）只走环境变量，绝不入库——gitleaks 会拦截。

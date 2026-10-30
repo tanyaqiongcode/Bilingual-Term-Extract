@@ -12,7 +12,7 @@ description: 双语术语提取技能 — 从双语平行文本（DOCX/TXT/Markd
 ## 立即执行：回归测试与基准（动手改代码之前和之后都要跑，约 3 秒）
 
 ```bash
-node <S>/tests/pipeline_test.js          # 无头回归 141 项断言
+node <S>/tests/pipeline_test.js          # 无头回归 160 项断言
 node <S>/benchmark/run_benchmark.js      # 金标准基准（EN↔ZH 各 16 术语对）
 node <S>/benchmark/run_benchmark.js --verbose   # 逐术语核对召回与译文命中
 ```
@@ -58,7 +58,7 @@ node scripts/term_extract.js candidates --src 源语文档 --tgt 目标文档 \
 
 | 字段 | 必填 | 说明 |
 |---|---|---|
-| `term` | ✓ | 必须与 candidates.json 中的 `term` 一致（大小写/单复数按 norm 归一匹配） |
+| `term` | ✓ | 必须与 candidates.json 中的 `term` 一致（大小写/单复数按 norm 归一匹配）。**同一术语只能出现一条**：大小写或单复数变体归一化后相同即判重复，相反决定会被 validate 拒绝 |
 | `accept` | ✓ | false = 判定非术语，整条丢弃并记入 report.rejected |
 | `tgt` | 建议 | 确认或修正后的译文；缺省沿用统计最优译文 |
 | `conf` | 建议 | 0-1。≥0.6 confirmed；<0.6 落 review |

@@ -10,7 +10,8 @@
 ```bash
 npm ci                            # 安装开发依赖
 npx eslint .                      # lint（必须 0 问题）
-node tests/pipeline_test.js       # 无头回归（141 项断言，npm run coverage 出覆盖率），必须全过
+node tests/pipeline_test.js       # 无头回归（160 项断言，npm run coverage 带门槛检查），必须全过
+npx eslint .                        # lint（0 问题，Node ≥ 20.19）
 node benchmark/run_benchmark.js   # 金标准基准（EN↔ZH 双向），必须全过
 ```
 

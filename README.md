@@ -4,6 +4,8 @@
 
 从**双语平行文本**自动提取「源语-目标语」对照术语表的 agent 技能 + 零依赖 CLI。统计召回 + LLM 精筛的混合管线，产出可直接导入 **Trados MultiTerm / memoQ** 的 TBX 术语库。
 
+> **English**: An agent skill + zero-dependency CLI that extracts bilingual term pairs from parallel texts — statistical recall + LLM refinement — and exports TBX termbases ready for Trados MultiTerm / memoQ.
+
 > 灵感来自 CAT 工具（Trados MultiTerm、memoQ、OmegaT）的术语管理能力，方法论参考 TermSuite（C-value）、Termolator（统计+过滤）、bitext-lexind（词对齐→词条→过滤）与 Anymalign（共现对齐）。
 
 ## 功能

@@ -46,5 +46,8 @@
     "globals": "^17.13.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.1"
   }
 }
